@@ -1,8 +1,8 @@
 package org.example;
 
-import java.util.ArrayList;
+import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Deque;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,7 +19,7 @@ public class Main {
         }
 
         int [] output = new int [numArr.length - windowSize + 1];
-        List<Integer> currentWindow = new ArrayList<>();
+        Deque<Integer> currentWindow = new ArrayDeque<>();
 
         for (int i = 0; i < windowSize; i++) {
             cleanUp(i, currentWindow, numArr);
@@ -42,7 +42,7 @@ public class Main {
         return output;
     }
 
-    private static void cleanUp(int index, List<Integer> currentWindow, int[] numArr) {
+    private static void cleanUp(int index, Deque<Integer> currentWindow, int[] numArr) {
         while (!currentWindow.isEmpty() && numArr[index] >= numArr[currentWindow.getLast()]) {
             currentWindow.removeLast();
         }
